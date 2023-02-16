@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useState } from "react";
+import React, { useEffect, useReducer } from "react";
 import { useQuery } from "react-query";
 import { getGameById } from "@/api/gamesApi";
 import { updatePlayers } from "@/api/gamesApi";
@@ -17,23 +17,14 @@ export default function GameSingle() {
     },
   });
 
-  const {
-    refetch: updatePlayersRefetch,
-    isLoading: updatePlayersIsLoading,
-    isFetching: updatePlayersIsFetching,
-  } = useQuery({
-    queryKey: ["updatePlayers", router.query.id],
-    queryFn: () => {
-      return updatePlayers(router.query.id, gameState?.attributes?.player);
-    },
-    enabled: false,
-  });
-
-  useEffect(() => {
-    if (!gameIsLoading) {
-      updatePlayersRefetch();
-    }
-  }, [gameState]);
+  const { refetch: updatePlayersRefetch, isFetching: updatePlayersIsFetching } =
+    useQuery({
+      queryKey: ["updatePlayers", router.query.id],
+      queryFn: () => {
+        return updatePlayers(router.query.id, gameState?.attributes?.player);
+      },
+      enabled: false,
+    });
 
   const heartsUpHandler = (player) => {
     dispatchGameState({
@@ -48,6 +39,7 @@ export default function GameSingle() {
       payload: { playerId: player.id },
     });
   };
+
   useEffect(() => {
     if (gameIsLoading) return;
     const game = gameData.data.data;
@@ -61,7 +53,11 @@ export default function GameSingle() {
     dispatchGameState({ type: "SET_DATA", payload: { data: game } });
   }, [gameData]);
 
-  useEffect(() => {}, [gameState]);
+  useEffect(() => {
+    if (!gameIsLoading) {
+      updatePlayersRefetch();
+    }
+  }, [gameState]);
 
   const BoardUI = () => {
     const players = gameState?.attributes?.player;
