@@ -5,4 +5,25 @@ body {
   background-image: url("/images/bg.png");
   background-size: cover;
   background-repeat: no-repeat;
+  font-family: dana;
+  min-height: 100vh;
+  position: relative;
+  background-position: center;
+}
+@font-face {
+  font-family: "dana";
+  font-weight: 400;
+  src: url("/fonts/Dana/woff2/Dana-Regular.woff2") format("woff2"),
+    url("/fonts/Dana/woff/Dana-Regular.woff") format("woff");
+}
+@font-face {
+  font-family: "dana";
+  font-weight: 700;
+  src: url("/fonts/Dana/woff2/Dana-Bold.woff2") format("woff2"),
+    url("/fonts/Dana/woff/Dana-Bold.woff") format("woff");
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }

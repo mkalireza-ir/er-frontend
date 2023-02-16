@@ -5,7 +5,7 @@ export default function App({ Component, pageProps }) {
   const queryClient = new QueryClient();
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="container mx-auto mt-5">
+      <div className="container mx-auto p-5">
         <Component {...pageProps} />
       </div>
     </QueryClientProvider>
