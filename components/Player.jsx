@@ -1,5 +1,5 @@
 import React from "react";
-import Hearts from "./hearts";
+import Hearts from "./Hearts";
 import { useGameContext } from "@/context/gameContext";
 export default function Player(props) {
   const { gameState } = useGameContext();
