@@ -3,8 +3,7 @@ import Hearts from "./hearts";
 import { useGameContext } from "@/context/gameContext";
 export default function Player(props) {
   const { gameState } = useGameContext();
-  const avatar_url =
-    "http://localhost:1337" + props?.player?.avatar?.data?.attributes?.url;
+  const avatar_url = `${process.env.ENDPOINT_URL}${props?.player?.avatar?.data?.attributes?.url}`;
   return (
     <div className=" p-3 rounded w-[calc(50%-10px)] shrink-0 items-center min-w-[400px]">
       <div className="flex w-full justify-center items-center">
