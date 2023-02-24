@@ -1,10 +1,10 @@
 module.exports = {
   apps: [
     {
-      name: "next",
-      cwd: "/home/ubuntu/er-frontend",
+      name: "frontend",
       script: "npm",
-      args: "start",
+      args: "run start",
+      cwd: "/home/ubuntu/er-frontend",
     },
   ],
 };
